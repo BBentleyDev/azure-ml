@@ -58,7 +58,7 @@ app.post("/", upload.single("file-to-upload"), async (req, res) => {
   try {
     // Upload image to cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
-    const brandURLImage = result.secure_url;
+    const facesImageURL = result.secure_url;
     async.series([
       async function () {
         // </snippet_functiondef_begin>
@@ -110,9 +110,6 @@ app.post("/", upload.single("file-to-upload"), async (req, res) => {
         console.log('-------------------------------------------------');
         console.log('DETECT FACES');
         console.log();
-  
-        // <snippet_faces>
-        const facesImageURL = 'https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg';
   
         // Analyze URL image.
         console.log('Analyzing faces in image...', facesImageURL.split('/').pop());
